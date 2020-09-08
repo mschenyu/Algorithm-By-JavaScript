@@ -12,8 +12,10 @@ function maxDepth(root){
   let res = 0;
   let queue = [root], tmp = [];
   while(queue.length){
-    root.left && tmp.push(root.left);
-    root.right && tmp.push(root.right);
+    for(let i=0; i<queue.length; i++){
+      queue[i].left && tmp.push(queue[i].left);
+      queue[i].right && tmp.push(queue[i].right);
+    }
     queue = tmp;
     tmp = [];
     res++;
