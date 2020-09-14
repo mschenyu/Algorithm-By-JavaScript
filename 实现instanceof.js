@@ -4,7 +4,7 @@ function new_instanceof(leftValue, rightValue){
   const rightPrototype = rightValue.prototype;
   leftValue = leftValue.__proto__;
   while(true){
-    if(leftValue === null){
+    if(leftValue === null){ // 终点Object.prototype.__proto__是null
       return false;
     }
     if(leftValue === rightPrototype){
