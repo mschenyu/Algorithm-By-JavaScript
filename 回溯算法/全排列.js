@@ -12,13 +12,15 @@ var permute = function(nums) {
   dfs(nums, len, 0, path, used, res);
   return res;
 
+  
   function dfs(nums, len, depth, path, used, res){
       if(depth === len) {
           //path是动态数组，不能直接push，需要拷贝一份当前值保存到结果中
           res.push([...path]); 
           return;
       }
-
+      
+      // 针对全排列中下标为depth的位置进行所有可能的尝试
       for(let i=0; i<len; i++){
           if(!used[i]){
               path.push(nums[i]);
