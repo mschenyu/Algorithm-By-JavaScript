@@ -41,5 +41,5 @@ function countingSort(arr){ //eg: [2,5,3,0,2,3,0,3]
   return arr;
 }
 
-const arr = [2,5,3,0,2,3,0,3]
+const arr = [4,5,6,1,3,2]
 console.log(countingSort(arr));
