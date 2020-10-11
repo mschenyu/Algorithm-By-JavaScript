@@ -6,25 +6,6 @@
 // 判断前后数字是否相差为1，如果是则加入同一个数组,最后将各数组格式化输出
 
 //分离出连续数组
-// 比较low的写法
-// function arrange(arr){
-//   let result = [], temp = [];
-//   let array = arr.sort((source,dest) => {
-//     return source - dest;
-//   }).concat(Infinity)  // concat(Infinity)用于确保最后一个数组push进result中
-//   let preNum = array[0];
-//   for(let i=0;i<array.length;i++){
-//     if(array[i] - preNum > 1){
-//       result.push(temp);
-//       temp = [];
-//     }
-//     temp.push(array[i]);
-//     preNum = array[i];
-//   }
-//   return result;
-// }
-
-// 比较优雅的写法
 function arrange(arr){
   let result = [], temp = [];
   let res = arr.sort((source,dest) => {
