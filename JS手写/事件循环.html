@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    * script start
+    * async1 start
+    * async2
+    * promise1
+    * script end
+    * async1 end
+    * promise2
+    * settimeout
+    */
+    async function async1(){
+      console.log('async1 start')
+      await async2()
+      console.log('async1 end')  // await后面的东西相当于是在promise.then里写的，所以是在当前宏任务执行完之后的微任务队列中执行
+    }
+    async function async2(){
+      console.log('async2')
+    }
+
+    console.log('script start')
+
+    setTimeout(() => {
+      console.log('settimeout')
+    }, 0);
+
+    async1()
+
+    new Promise(function(resolve){
+      console.log('promise1')
+      resolve()
+    }).then(function(){
+      console.log('promise2')
+    })
+
+    console.log('script end')
+  </script>
+</body>
+</html>

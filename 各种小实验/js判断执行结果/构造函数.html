@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // new Animal 、 new Animal() 、new Animal({}) 的执行结果有什么区别
+    function Animal(params){
+      this.hasTail = true
+      return params
+    }
+    const a = new Animal.hasTail;
+    const b = new Animal().hasTail
+    const c = new Animal('bb')
+    const d = new Animal({})
+
+    console.log(a)
+    console.log(b)
+    console.log(c)
+    console.log(d)
+    
+
+    /**
+     * 猜测：a是一个字符串 错了 console.log(Animal)才是字符串
+     * c是构造函数的实例
+     * d是一个空对象，原型链上没有Animal
+    */
+  </script>
+</body>
+</html>

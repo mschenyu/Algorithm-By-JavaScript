@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 100px;
+      /* height: 100px; */
+      border: 1px solid #ccc;
+      overflow: hidden;
+    }
+    /* 超出一行显示省略号 */
+    /* .box{
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    } */
+
+    /* 多行超出显示省略号 */
+    /* .box{
+      text-overflow:ellipsis;
+      display:-webkit-box; 
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:3; 
+    } */
+
+    /* 跨浏览器兼容的方案 */
+    .box{
+      line-height: 14px;
+      height: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+    .box::after{
+      content: '...';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    我是文章，我是文章我是文章我是，文章我是文章我是文章我是文章我是文章我是文章
+  </div>
+</body>
+</html>
