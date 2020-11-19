@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="box">xxx</div>
+
+  <script>
+    window.data = 5;
+    var foo = {
+      data: 6,
+      click(){
+        console.log(this.data)
+      }
+    }
+    const div = document.getElementById('box')
+    // div.addEventListener('click', foo.click) // undefined 此时的this是div
+
+    // 怎么输出6？
+    // div.addEventListener('click', foo.click.bind(foo)) 
+    // div.addEventListener('click', () => {
+    //   foo.click() // foo在调用click，所以this是foo
+    // })
+
+    //怎么输出5？
+    div.addEventListener('click', foo.click.bind(window)) 
+  </script>
+</body>
+</html>

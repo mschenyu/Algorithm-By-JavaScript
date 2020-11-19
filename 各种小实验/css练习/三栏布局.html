@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 1, 浮动布局，但是注意中间的块得在最下面 */
+    /* .left{
+      float: left;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .right{
+      float: right;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .middle{
+      height: 200px;
+      background-color: yellow;
+    } */
+
+    /* 2. flex布局 */
+    /* .parent{
+      display: flex;
+    }
+    .left, .right{
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .middle{
+      flex-grow: 1;
+      height: 200px;
+      background-color: yellow;
+    } */
+    
+    /* 3.绝对定位 同样要注意middle在最后，否则div独占一行，就把下一个浮动/定位元素挤下去了 */
+    .parent{
+      position: relative;
+    }
+    .left{
+      position: absolute;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .right{
+      position: absolute;
+      right: 0;
+      width: 100px;
+      height: 200px;
+      background-color: red;
+    }
+    .middle{
+      margin: 0 100px;
+      height: 200px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="middle"></div>
+    
+  </div>
+</body>
+</html>
