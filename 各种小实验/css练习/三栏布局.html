@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    /* 1, 浮动布局，但是注意中间的块得在最下面 */
+    /* 1, 浮动布局，注意中间的块得在最下面，因为浮动元素碰到块元素会停止，如果先排了中间的块元素，它就已经占据满行了 */
     /* .left{
       float: left;
       width: 100px;
@@ -38,7 +38,7 @@
       background-color: yellow;
     } */
     
-    /* 3.绝对定位 同样要注意middle在最后，否则div独占一行，就把下一个浮动/定位元素挤下去了 */
+    /* 3.绝对定位 注意右边元素的top:0 必须写，要不然默认的top会根据现有文档流往下排 */
     .parent{
       position: relative;
     }
@@ -51,6 +51,7 @@
     .right{
       position: absolute;
       right: 0;
+      top: 0;
       width: 100px;
       height: 200px;
       background-color: red;
@@ -65,9 +66,8 @@
 <body>
   <div class="parent">
     <div class="left"></div>
-    <div class="right"></div>
     <div class="middle"></div>
-    
+    <div class="right"></div>
   </div>
 </body>
 </html>
