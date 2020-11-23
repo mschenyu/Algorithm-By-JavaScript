@@ -1,14 +1,14 @@
+// const res = []
 function fn(arr, res){
   arr.forEach(item => {
-    if(typeof item === 'object'){
-      fn(arr, res)
+    if(Array.isArray(item)){
+      fn(item, res)
     }else{
-      console.log(res)
       res.push(item)
     }
   })
-  return res;
+  return res
 }
 
-const arr = fn([1,2,[3,[4]],5], [])
-console.log(arr)
+const res =fn([1,2,[3,[4]],5], [])
+console.log(res)
