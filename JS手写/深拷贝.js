@@ -54,8 +54,10 @@ const target = {
       child: 'child',
       ss: {a:1}
   },
-  field4: [2, 4, 8,[0]]
+  field4: [2, 4, 8,[0]],
+  field5: function(){var a=1}
 };
 target.target = target
+console.log(target)
 
 console.log(deepClone(target))

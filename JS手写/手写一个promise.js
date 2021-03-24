@@ -36,7 +36,6 @@
 
  class MyPromise {
    constructor(fn){
-     debugger
      // 初始化状态
      this.status = PENDING;
      // 将成功、失败的结果放在this上，便于then、catch访问

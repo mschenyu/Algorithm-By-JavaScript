@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #light{
+      margin: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="light"></div>
+  <p id="text"></p>
+  
+  <script>
+    // 设置颜色和倒计时
+    async function setColor(color, time){
+      let light = document.getElementById('light');
+      let text = document.getElementById('text');
+      return new Promise((resolve, reject) => {
+        const timer = setInterval(() => {
+          text.innerHTML = time--;
+          light.style.background = color;
+          if(time === 0){
+            clearTimeout(timer)
+            resolve()
+          }
+        }, 1000);
+      })
+    }
+
+    // 循环调用
+   async function loop(){
+      await setColor('red', 5)
+      await setColor('yellow', 3)
+      await setColor('green', 10)
+      loop()
+    }
+
+    window.onload = loop()
+
+  </script>
+</body>
+</html>

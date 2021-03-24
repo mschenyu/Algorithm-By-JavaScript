@@ -6,16 +6,12 @@
 function debounce(fn, wait){
   let timerId = null;
 
-  function debounced(){
-    let context = this; //保存作用域
-    let args = arguments;
-
+  return function (){
     clearTimeout(timerId);
     timerId = setTimeout(() => {
-      fn.apply(context, args);
+      fn.apply(this, arguments);
     }, wait);
   }
-  return debounced;
 }
 
 //test
@@ -28,34 +24,31 @@ function debounce(fn, wait){
  * throttle: 在延迟时间内，如果再次调用函数，不取消上一个定时器，而是取消本次调用，表现是密集触发时，每隔一段时间执行一次
  * 所以 throttle 适用于 scroll, mousemove 等事件。
  */
-function throttle(fn, wait){
-  let timerId = null;
-  let firstInvoke = true; //是否是第一次执行
-  
-  function throttled(){
-    let context = this; //保存作用域
-    let args = arguments;
 
-    //如果是第一次触发，直接执行
-    if(firstInvoke){
-      fn.apply(context, args);
-      firstInvoke = false;
+function throttle(fn, wait){
+  let flag = true;
+  let first = true;
+  return function (){
+
+    if(first){
+      fn.apply(this, arguments)
+      first = false;
       return;
     }
 
-    // 如果定时器已存在，直接返回；
-    if(timerId) return;
-
-    timerId = setTimeout(() => {
-      clearTimeout(timerId);
-      timerId = null;
-      fn.apply(context, args);
+    if(!flag) return;
+    flag = false;
+    setTimeout(() => {
+      fn.apply(this, arguments)
+      flag = true;
     }, wait);
   }
-  return throttled;
 }
+
+
+
 //test
 var resizeFun = function(e) {
   console.log('resize');
 };
-window.addEventListener('resize', throttle(resizeFun, 500));
+window.addEventListener('resize', throttle(resizeFun, 1000));

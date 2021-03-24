@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // "use strict";
+    function fn() {
+        console.log(this);
+    }
+    // apply方法结果同下
+    fn.call(); // 普通模式下this是window，在严格模式下this是undefined
+    fn.call(null); // 普通模式下this是window，在严格模式下this是null
+    fn.call(undefined); // 普通模式下this是window，在严格模式下this是undefined
+  </script>
+</body>
+</html>
